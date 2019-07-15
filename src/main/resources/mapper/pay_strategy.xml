@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.m1_design_mode.mapper.PayStrategyMapper">
+
+    <!-- 表字段 -->
+    <sql id="fields">
+        ID,
+        NAME
+    </sql>
+
+    <!-- 根据id查列表 -->
+    <select id="listOfIds" resultType="com.example.m1_design_mode.model.PayStrategy">
+        SELECT <include refid="fields"/>  FROM PAY_STRATEGY WHERE IS_DELETED=0
+        AND ID in
+        <foreach collection="payStrategyIds" index="index" item="item"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        ORDER BY CREATE_TIME DESC
+    </select>
+
+    <!-- 查单个 -->
+    <select id="get"  resultType="com.example.m1_design_mode.model.PayStrategy">
+        SELECT <include refid="fields"/>  FROM PAY_STRATEGY WHERE IS_DELETED=0  AND ID = #{payStrategyId}
+    </select>
+
+    <!-- 删除 -->
+    <update id="delete" parameterType="com.example.m1_design_mode.model.PayStrategy">
+        UPDATE PAY_STRATEGY
+        <set>
+
+            IS_DELETED = 1
+        </set>
+        WHERE ID=#{id} AND IS_DELETED=0
+    </update>
+
+    <!-- 修改 -->
+    <update id="update" parameterType="com.example.m1_design_mode.model.PayStrategy">
+        UPDATE PAY_STRATEGY
+        <set>
+            <if test="name != null">NAME= #{name}, </if>
+            UPDATE_TIME = CURRENT_TIMESTAMP
+        </set>
+        WHERE ID=#{id} AND IS_DELETED=0
+    </update>
+
+    <!-- 保存 -->
+    <insert id="save" parameterType="com.example.m1_design_mode.model.PayStrategy" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO PAY_STRATEGY(
+            <if test="name != null">NAME </if>
+        ) values (
+            <if test="name != null">#{name} </if>
+        )
+    </insert>
+
+     <!-- 查全部 -->
+    <select id="listAll" resultType="com.example.m1_design_mode.model.PayStrategy">
+        SELECT <include refid="fields"/>  FROM PAY_STRATEGY WHERE IS_DELETED=0
+        ORDER BY CREATE_TIME DESC
+    </select>
+</mapper>
