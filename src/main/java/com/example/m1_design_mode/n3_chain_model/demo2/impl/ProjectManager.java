@@ -18,7 +18,7 @@ public class ProjectManager extends BaseApprovalHandler {
     public void handlerRequest(int money) {
 
         //最大审批额度
-        int maxMoney=500;
+        int maxMoney=2000;
 
         if(money <=maxMoney){
             System.out.println("我是"+this.getClass().getSimpleName()+"，正在审批金额 money="+money);

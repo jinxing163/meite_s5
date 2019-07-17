@@ -18,7 +18,7 @@ public class BranchManager extends BaseApprovalHandler {
     public void handlerRequest(int money) {
 
         //最大审批额度
-        int maxMoney=1000;
+        int maxMoney=5000;
 
         if(money <=maxMoney){
             System.out.println("我是"+this.getClass().getSimpleName()+"，正在审批金额 money="+money);

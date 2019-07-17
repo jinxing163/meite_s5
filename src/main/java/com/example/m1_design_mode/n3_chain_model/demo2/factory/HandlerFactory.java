@@ -6,6 +6,7 @@ import com.example.m1_design_mode.n3_chain_model.demo2.impl.GeneralManager;
 import com.example.m1_design_mode.n3_chain_model.demo2.impl.ProjectManager;
 
 /**
+ * 处理功能
  * @author JinXing
  * @date 2019/7/17 10:55
  */
