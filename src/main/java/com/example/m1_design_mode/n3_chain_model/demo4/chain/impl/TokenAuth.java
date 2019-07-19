@@ -12,17 +12,17 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * token校验拦截器
+ * token鉴权
  *
  * @author JinXing
  * @date 2019/7/17 15:42
  */
-public class TokenFilter extends BaseFilterHandler {
+public class TokenAuth extends BaseFilterHandler {
 
     private final String ckToken = "123";
 
-    public TokenFilter(BaseFilterHandler baseFilterHandler) {
-        this.baseFilterHandler = baseFilterHandler;
+    public TokenAuth(BaseFilterHandler baseFilterHandler) {
+        this.successor = baseFilterHandler;
     }
 
     @Override

@@ -14,7 +14,7 @@ import java.io.IOException;
 public abstract class BaseFilterHandler {
 
     /** 处理当前请求的责任对象 */
-    protected BaseFilterHandler baseFilterHandler;
+    protected BaseFilterHandler successor;
 
     /**
      * 处理请求
@@ -51,18 +51,18 @@ public abstract class BaseFilterHandler {
     protected void transferRequest(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         //将请求传递给下家
-        BaseFilterHandler baseFilter = getBaseFilterHandler();
+        BaseFilterHandler baseFilter = getSuccessor();
         if (baseFilter != null) {
             baseFilter.handlerRequest(request, response, chain);
         }
     }
 
 
-    public BaseFilterHandler getBaseFilterHandler() {
-        return baseFilterHandler;
+    public BaseFilterHandler getSuccessor() {
+        return successor;
     }
 
-    public void setBaseFilterHandler(BaseFilterHandler baseFilterHandler) {
-        this.baseFilterHandler = baseFilterHandler;
+    public void setSuccessor(BaseFilterHandler successor) {
+        this.successor = successor;
     }
 }

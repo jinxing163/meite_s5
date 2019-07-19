@@ -17,9 +17,8 @@ public class TestMain {
         //申请金额
         int money = 8000;
 
-//        testV1(money);
-
-        testV2(money);
+        System.out.println("\n\n项目经理开始审批");
+        HandlerFactory.getProjectManagerHandler().handlerRequest(money);
     }
 
 

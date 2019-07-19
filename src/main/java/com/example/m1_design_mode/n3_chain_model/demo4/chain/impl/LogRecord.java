@@ -13,15 +13,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 日志记录拦截器
+ * 日志记录
  *
  * @author JinXing
  * @date 2019/7/17 15:38
  */
-public class LogFilter extends BaseFilterHandler {
+public class LogRecord extends BaseFilterHandler {
 
-    public LogFilter(BaseFilterHandler baseFilterHandler) {
-        this.baseFilterHandler = baseFilterHandler;
+    public LogRecord(BaseFilterHandler baseFilterHandler) {
+        this.successor = baseFilterHandler;
     }
 
     @Override

@@ -15,9 +15,9 @@ public class TestMain {
         BaseHandler baseHandler2=new ConcreteHandler("baseHandler2");
         BaseHandler baseHandler3=new ConcreteHandler("baseHandler3");
         BaseHandler baseHandler4=new ConcreteHandler("baseHandler4");
-        baseHandler1.setBaseHandler(baseHandler2);
-        baseHandler2.setBaseHandler(baseHandler3);
-        baseHandler3.setBaseHandler(baseHandler4);
+        baseHandler1.setSuccessor(baseHandler2);
+        baseHandler2.setSuccessor(baseHandler3);
+        baseHandler3.setSuccessor(baseHandler4);
 
         //提交请求
         baseHandler1.handleRequest();

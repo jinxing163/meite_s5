@@ -16,9 +16,6 @@ public class ConcreteHandler extends BaseHandler {
     public ConcreteHandler(String handlerName) {
         this.handlerName = handlerName;
     }
-    public String getHandlerName() {
-        return handlerName;
-    }
 
     /**
      * 处理请求的方法
@@ -28,9 +25,9 @@ public class ConcreteHandler extends BaseHandler {
     @Override
     public void handleRequest() {
 
-        if(getBaseHandler() !=null){
+        if(getSuccessor() !=null){
             System.out.println("已经有对象处理此请求！"+this.handlerName);
-            getBaseHandler().handleRequest();
+            getSuccessor().handleRequest();
         }else {
             System.out.println("正在处理请求......."+this.handlerName);
         }
