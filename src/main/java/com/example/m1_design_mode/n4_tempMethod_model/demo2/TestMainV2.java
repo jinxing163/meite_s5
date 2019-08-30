@@ -37,6 +37,7 @@ public class TestMainV2 {
 
     public static void test1() {
         System.out.println("aaa");
+        System.out.println("bbb");
     }
 
 }
